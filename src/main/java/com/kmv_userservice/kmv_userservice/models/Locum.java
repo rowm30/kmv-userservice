@@ -14,31 +14,33 @@ import java.time.LocalDateTime;
 public class Locum {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer locum_id;
+    @Column(name = "locum_id")
+    private Integer locumId;
 
-    @Column(nullable = false)
-    private String first_name;
+    @Column(name = "first_name", nullable = false)
+    private String firstName;
 
-    @Column(nullable = false)
-    private String last_name;
+    @Column(name = "last_name", nullable = false)
+    private String lastName;
 
-    @Column(nullable = false, unique = true)
-    private String email_address;
+    @Column(name = "email_address", nullable = false, unique = true)
+    private String emailAddress;
 
-    @Column(nullable = false, unique = true)
-    private String mobile_phone_number;
+    @Column(name = "mobile_phone_number", nullable = false, unique = true)
+    private String mobilePhoneNumber;
 
-    @Column(nullable = false)
+    @Column(name = "password", nullable = false)
     private String password;
 
-    private String profile_photo;
+    @Column(name = "profile_photo")
+    private String profilePhoto;
 
     @CreationTimestamp
-    @Column(nullable = false, updatable = false)
-    private LocalDateTime created_at;
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private LocalDateTime createdAt;
 
     @CreationTimestamp
-    @Column(nullable = false, updatable = false)
-    private LocalDateTime updated_at;
+    @Column(name = "updated_at", nullable = false, updatable = false)
+    private LocalDateTime updatedAt;
 
 }
