@@ -4,17 +4,14 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table(name = "clinic_addresses")
+@Table(name = "referrals")
 @Data
-public class ClinicAddress {
+public class Referral {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String line1;
-    private String line2;
-    private String town;
-    private String postcode;
+    private String referralLink;
 
     @ManyToOne
     @JoinColumn(name = "clinic_id", referencedColumnName = "id")

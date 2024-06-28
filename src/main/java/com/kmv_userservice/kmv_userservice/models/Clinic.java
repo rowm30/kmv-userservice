@@ -2,6 +2,7 @@ package com.kmv_userservice.kmv_userservice.models;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import java.util.Set;
 
 @Entity
 @Table(name = "clinics")
@@ -26,14 +27,15 @@ public class Clinic {
     @Column(nullable = false)
     private String password;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id", referencedColumnName = "id")
-    private Address address;
+    @OneToMany(mappedBy = "clinic", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<ClinicAddress> addresses;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "practice_details_id", referencedColumnName = "id")
-    private PracticeDetails practiceDetails;
+    @OneToMany(mappedBy = "clinic", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<PracticeDetails> practiceDetails;
 
-    @OneToMany(mappedBy = "clinic")
-    private List<PaymentMethod> paymentMethods;
+    @OneToMany(mappedBy = "clinic", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<PaymentMethod> paymentMethods;
+
+    @OneToMany(mappedBy = "clinic", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Booking> bookings;
 }
