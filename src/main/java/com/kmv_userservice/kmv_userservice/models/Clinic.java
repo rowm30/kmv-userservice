@@ -13,6 +13,9 @@ public class Clinic {
     private Long id;
 
     @Column(nullable = false)
+    private String clinicName;
+
+    @Column(nullable = false)
     private String firstName;
 
     @Column(nullable = false)
